@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume Builder Pro</title>
+    <link rel="icon" href="/static/img/logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+
+<body>
+
+    <!-- ═══ SIDEBAR ══════════════════════════════════════════════════════════════ -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+    <img src="/static/img/logo.jpg" alt="Resumebuilder Pro Logo" class="logo-img">
+    <span class="logo-text">Resume<b>Pro</b></span>
+</div>
+
+        <nav class="sidebar-nav">
+            <button class="nav-btn active" data-panel="builder" title="Builder">
+                <span class="nav-icon">✏️</span><span class="nav-label">Builder</span>
+            </button>
+            <button class="nav-btn" data-panel="templates" title="Templates">
+                <span class="nav-icon">🎨</span><span class="nav-label">Templates</span>
+            </button>
+            <button class="nav-btn" data-panel="ats" title="ATS Score">
+                <span class="nav-icon">📊</span><span class="nav-label">ATS Score</span>
+            </button>
+            <button class="nav-btn" data-panel="jobs" title="Job Match">
+                <span class="nav-icon">🎯</span><span class="nav-label">Job Match</span>
+            </button>
+            <button class="nav-btn" data-panel="saved" title="Saved">
+                <span class="nav-icon">💾</span><span class="nav-label">Saved</span>
+            </button>
+        </nav>
+
+        <div class="sidebar-actions">
+            <button class="btn-glass btn-save" id="btnSave">💾 Save</button>
+            <button class="btn-glass btn-pdf" id="btnPDF">📄 PDF</button>
+            <button class="btn-glass btn-docx" id="btnDOCX">📝 DOCX</button>
+        </div>
+    </aside>
+
+    <!-- ═══ MAIN CONTENT ═════════════════════════════════════════════════════════ -->
+    <main class="main-content">
+
+        <!-- Top Bar -->
+        <header class="topbar">
+            <button class="hamburger" id="hamburger">☰</button>
+            <div class="topbar-title">
+                <span id="resumeNameDisplay">Untitled Resume</span>
+                <button class="name-edit-btn" id="nameEditBtn">✏️</button>
+            </div>
+            <div class="topbar-right">
+                <div class="autosave-indicator" id="autosaveIndicator">
+                    <span class="autosave-dot"></span> Auto-saved
+                </div>
+                <button class="btn-preview-toggle" id="previewToggle">👁 Preview</button>
+            </div>
+        </header>
+
+        <!-- ─── PANELS ─────────────────────────────────────────────────────────── -->
+
+        <!-- BUILDER PANEL -->
+        <section class="panel active" id="panel-builder">
+            <div class="builder-layout">
+
+                <!-- Form Column -->
+                <div class="form-column" id="formColumn">
+                    <div class="section-list" id="sectionList">
+
+                        <!-- Personal Info -->
+                        <div class="form-section" data-section="personal">
+                            <div class="section-header-bar">
+                                <span class="drag-handle">⋮⋮</span>
+                                <span class="section-icon">👤</span>
+                                <h3>Personal Information</h3>
+                                <button class="toggle-section" title="Show/Hide">👁</button>
+                            </div>
+                            <div class="section-body">
+                                <div class="field-grid">
+                                    <div class="field-group full-width">
+                                        <label>Full Name *</label>
+                                        <input type="text" id="fullName" placeholder="John Doe"
+                                            data-field="personal.fullName" />
+                                    </div>
+                                    <div class="field-group full-width">
+                                        <label>Professional Title</label>
+                                        <input type="text" id="title" placeholder="Senior Software Engineer"
+                                            data-field="personal.title" />
+                                    </div>
+                                    <div class="field-group">
+                                        <label>Email</label>
+                                        <input type="email" id="email" placeholder="john@example.com"
+                                            data-field="personal.email" />
+                                    </div>
+                                    <div class="field-group">
+                                        <label>Phone</label>
+                                        <input type="tel" id="phone" placeholder="+1 (555) 000-0000"
+                                            data-field="personal.phone" />
+                                    </div>
+                                    <div class="field-group">
+                                        <label>Location</label>
+                                        <input type="text" id="location" placeholder="New York, NY"
+                                            data-field="personal.location" />
+                                    </div>
+                                    <div class="field-group">
+                                        <label>LinkedIn</label>
+                                        <input type="text" id="linkedin" placeholder="linkedin.com/in/johndoe"
+                                            data-field="personal.linkedin" />
+                                    </div>
+                                    <div class="field-group">
+                                        <label>GitHub</label>
+                                        <input type="text" id="github" placeholder="github.com/johndoe"
+                                            data-field="personal.github" />
+                                    </div>
+                                    <div class="field-group">
+                                        <label>Portfolio</label>
+                                        <input type="text" id="portfolio" placeholder="johndoe.dev"
+                                            data-field="personal.portfolio" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Summary -->
+                        <div class="form-section" data-section="summary">
+                            <div class="section-header-bar">
+                                <span class="drag-handle">⋮⋮</span>
+                                <span class="section-icon">📝</span>
+                                <h3>Professional Summary</h3>
+                                <button class="toggle-section" title="Show/Hide">👁</button>
+                            </div>
+                            <div class="section-body">
+                                <div class="field-group full-width">
+                                    <label>Summary</label>
+                                    <textarea id="summary" rows="4"
+                                        placeholder="A results-driven professional with X years of experience in..."
+                                        data-field="summary"></textarea>
+                                    <div class="char-count"><span id="summaryCount">0</span> / 600 characters</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Experience -->
+                        <div class="form-section" data-section="experience">
+                            <div class="section-header-bar">
+                                <span class="drag-handle">⋮⋮</span>
+                                <span class="section-icon">💼</span>
+                                <h3>Work Experience</h3>
+                                <button class="toggle-section" title="Show/Hide">👁</button>
+                            </div>
+                            <div class="section-body">
+                                <div id="experienceList" class="repeatable-list"></div>
+                                <button class="btn-add-item" data-type="experience">+ Add Experience</button>
+                            </div>
+                        </div>
+
+                        <!-- Education -->
+                        <div class="form-section" data-section="education">
+                            <div class="section-header-bar">
+                                <span class="drag-handle">⋮⋮</span>
+                                <span class="section-icon">🎓</span>
+                                <h3>Education</h3>
+                                <button class="toggle-section" title="Show/Hide">👁</button>
+                            </div>
+                            <div class="section-body">
+                                <div id="educationList" class="repeatable-list"></div>
+                                <button class="btn-add-item" data-type="education">+ Add Education</button>
+                            </div>
+                        </div>
+
+                        <!-- Skills -->
+                        <div class="form-section" data-section="skills">
+                            <div class="section-header-bar">
+                                <span class="drag-handle">⋮⋮</span>
+                                <span class="section-icon">⚡</span>
+                                <h3>Skills</h3>
+                                <button class="toggle-section" title="Show/Hide">👁</button>
+                            </div>
+                            <div class="section-body">
+                                <div class="skills-input-area">
+                                    <div class="skill-tags" id="skillTags"></div>
+                                    <div class="skill-input-row">
+                                        <input type="text" id="skillInput"
+                                            placeholder="Type a skill and press Enter…" />
+                                        <button class="btn-add-skill" id="addSkillBtn">Add</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Projects -->
+                        <div class="form-section" data-section="projects">
+                            <div class="section-header-bar">
+                                <span class="drag-handle">⋮⋮</span>
+                                <span class="section-icon">🚀</span>
+                                <h3>Projects</h3>
+                                <button class="toggle-section" title="Show/Hide">👁</button>
+                            </div>
+                            <div class="section-body">
+                                <div id="projectsList" class="repeatable-list"></div>
+                                <button class="btn-add-item" data-type="projects">+ Add Project</button>
+                            </div>
+                        </div>
+
+                        <!-- Certifications -->
+                        <div class="form-section" data-section="certifications">
+                            <div class="section-header-bar">
+                                <span class="drag-handle">⋮⋮</span>
+                                <span class="section-icon">🏅</span>
+                                <h3>Certifications</h3>
+                                <button class="toggle-section" title="Show/Hide">👁</button>
+                            </div>
+                            <div class="section-body">
+                                <div id="certificationsList" class="repeatable-list"></div>
+                                <button class="btn-add-item" data-type="certifications">+ Add Certification</button>
+                            </div>
+                        </div>
+
+                        <!-- Achievements -->
+                        <div class="form-section" data-section="achievements">
+                            <div class="section-header-bar">
+                                <span class="drag-handle">⋮⋮</span>
+                                <span class="section-icon">🏆</span>
+                                <h3>Achievements</h3>
+                                <button class="toggle-section" title="Show/Hide">👁</button>
+                            </div>
+                            <div class="section-body">
+                                <div id="achievementsList" class="repeatable-list"></div>
+                                <button class="btn-add-item" data-type="achievements">+ Add Achievement</button>
+                            </div>
+                        </div>
+
+                        <!-- Leadership -->
+                        <div class="form-section" data-section="leadership">
+                            <div class="section-header-bar">
+                                <span class="drag-handle">⋮⋮</span>
+                                <span class="section-icon">👑</span>
+                                <h3>Leadership</h3>
+                                <button class="toggle-section" title="Show/Hide">👁</button>
+                            </div>
+                            <div class="section-body">
+                                <div id="leadershipList" class="repeatable-list"></div>
+                                <button class="btn-add-item" data-type="leadership">+ Add Leadership Role</button>
+                            </div>
+                        </div>
+
+                        <!-- Languages -->
+                        <div class="form-section" data-section="languages">
+                            <div class="section-header-bar">
+                                <span class="drag-handle">⋮⋮</span>
+                                <span class="section-icon">🌐</span>
+                                <h3>Languages</h3>
+                                <button class="toggle-section" title="Show/Hide">👁</button>
+                            </div>
+                            <div class="section-body">
+                                <div id="languagesList" class="repeatable-list"></div>
+                                <button class="btn-add-item" data-type="languages">+ Add Language</button>
+                            </div>
+                        </div>
+
+                        <!-- Interests -->
+                        <div class="form-section" data-section="interests">
+                            <div class="section-header-bar">
+                                <span class="drag-handle">⋮⋮</span>
+                                <span class="section-icon">✨</span>
+                                <h3>Interests</h3>
+                                <button class="toggle-section" title="Show/Hide">👁</button>
+                            </div>
+                            <div class="section-body">
+                                <div class="field-group full-width">
+                                    <label>Interests (comma separated)</label>
+                                    <input type="text" id="interestsInput"
+                                        placeholder="Photography, Chess, Open Source…" data-field="interestsRaw" />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><!-- /#sectionList -->
+                </div><!-- /.form-column -->
+
+                <!-- Preview Column -->
+                <div class="preview-column" id="previewColumn">
+                    <div class="preview-toolbar">
+                        <span class="preview-label">Live Preview</span>
+                        <div class="preview-zoom">
+                            <button id="zoomOut">−</button>
+                            <span id="zoomLevel">100%</span>
+                            <button id="zoomIn">+</button>
+                        </div>
+                    </div>
+                    <div class="preview-wrapper">
+                        <div class="resume-preview" id="resumePreview">
+                            <!-- Generated dynamically by script.js -->
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /.builder-layout -->
+        </section><!-- /#panel-builder -->
+
+        <!-- TEMPLATES PANEL -->
+        <section class="panel" id="panel-templates">
+            <div class="panel-inner">
+                <h2 class="panel-title">Choose a Template</h2>
+                <p class="panel-subtitle">10 professionally designed templates to match your style</p>
+                <div class="template-grid" id="templateGrid">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ATS PANEL -->
+        <section class="panel" id="panel-ats">
+            <div class="panel-inner">
+                <h2 class="panel-title">ATS Score Checker</h2>
+                <p class="panel-subtitle">Analyze how well your resume performs with Applicant Tracking Systems</p>
+                <div class="ats-container">
+                    <button class="btn-primary btn-analyze" id="btnAnalyzeATS">🔍 Analyze My Resume</button>
+                    <div class="ats-results" id="atsResults" style="display:none">
+                        <div class="score-circle-wrap">
+                            <div class="score-circle" id="scoreCircle">
+                                <svg viewBox="0 0 120 120">
+                                    <circle class="score-bg" cx="60" cy="60" r="50" />
+                                    <circle class="score-fill" cx="60" cy="60" r="50" id="scoreFill" />
+                                </svg>
+                                <div class="score-number" id="scoreNumber">0</div>
+                                <div class="score-label">ATS Score</div>
+                            </div>
+                            <div class="score-rating" id="scoreRating"></div>
+                        </div>
+                        <div class="ats-breakdown" id="atsBreakdown"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- JOB MATCH PANEL -->
+        <section class="panel" id="panel-jobs">
+            <div class="panel-inner">
+                <h2 class="panel-title">Job Match Analyzer</h2>
+                <p class="panel-subtitle">Paste a job description to see how well your resume aligns</p>
+                <div class="job-match-container">
+                    <div class="jd-input-area">
+                        <label>Job Description</label>
+                        <textarea id="jobDescInput" rows="10"
+                            placeholder="Paste the full job description here…"></textarea>
+                    </div>
+                    <button class="btn-primary btn-analyze" id="btnAnalyzeJob">🎯 Analyze Match</button>
+                    <div class="job-results" id="jobResults" style="display:none">
+                        <div class="match-header">
+                            <div class="match-gauge">
+                                <div class="gauge-fill" id="gaugeFill"></div>
+                                <div class="gauge-pct" id="gaugePct">0%</div>
+                            </div>
+                            <div class="match-verdict" id="matchVerdict"></div>
+                        </div>
+                        <div class="keyword-sections" id="keywordSections"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SAVED PANEL -->
+        <section class="panel" id="panel-saved">
+            <div class="panel-inner">
+                <h2 class="panel-title">Saved Resumes</h2>
+                <p class="panel-subtitle">Your resume library</p>
+                <div class="saved-list" id="savedList">
+                    <div class="empty-state">
+                        <div class="empty-icon">📂</div>
+                        <p>No saved resumes yet.<br />Build one and hit Save!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ═══ MODALS ════════════════════════════════════════════════════════════════ -->
+
+    <!-- Rename Modal -->
+    <div class="modal-overlay" id="renameModal" style="display:none">
+        <div class="modal-box">
+            <h3>Rename Resume</h3>
+            <input type="text" id="renameInput" placeholder="Resume name…" />
+            <div class="modal-actions">
+                <button class="btn-ghost" id="renameCancelBtn">Cancel</button>
+                <button class="btn-primary" id="renameConfirmBtn">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script src="/static/script.js"></script>
+</body>
+
+</html>
